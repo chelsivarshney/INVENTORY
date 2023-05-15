@@ -6,7 +6,7 @@
 rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 />
-<div class="container-fluid" style="background: linear-gradient(to right, #d8efe5, #d8efe5);">
+<div class="container-fluid" style="background: linear-gradient( rgb(109, 172, 255), white);">
   <div class="row mt-2 mb-2">
     <div class="col-md-12 text-center">
       <div class="card-body">
@@ -19,16 +19,40 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 </div>
 
 </div>   
+
 <div class="row">
   <div class="col-sm-8 " style="background-color: #d8efe5, #d8efe5;">
-    <div class="indented"> <h2>Household Hazardous Waste</h2> 
-      <IMG SRC="../pumpkin.gif" HEIGHT=100 WIDTH=100 ALT="picture of a pumpkin" ALIGN=LEFT> Come on down to the Halloween party! You'll have a great ol' time. <BR CLEAR=LEFT>8:00pm to midnight. Wear a costume or come as your own scary self!
+    <p>
+      <canvas id="test-canvas" width="900" height="470"  background: white;"></canvas>
+    </p>
+  </div>
+
+
+<script>
+  // Get the canvas element
+  var canvas = document.getElementById("test-canvas");
+  
+  // Get the 2D drawing context
+  var context = canvas.getContext("2d");
+  
+  // Create an Image object
+  var image = new Image();
+  
+  // Set the source of the image
+  image.src = "media/login2.png"; // Replace "ligi.png" with the actual path to your image
+  
+  // Wait for the image to load
+  image.onload = function() {
+    // Draw the image on the canvas
+    context.drawImage(image, 0, 0); // You can adjust the position (0, 0) as per your requirement
+  };
+</script>
+
 
       
-      <p>These items can be brought to the recycling center for redistribution. This is much better than throwing them out.</p> <ul> <li>Household cleaners</li> <li>Computers and computer accessories</li> <li>Clothes</li> </ul> </div>
+      
 
   
-  </div>
   <div class="col-sm-4">
  
 
@@ -173,4 +197,3 @@ document.querySelector('form').addEventListener('submit', function(event) {
        
 </div>
 {% endblock %}
-

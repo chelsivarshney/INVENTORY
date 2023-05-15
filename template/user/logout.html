@@ -1,14 +1,19 @@
 {% extends 'partials/base.html' %}
 {% block title %}Logout Page{% endblock %}
 {% block content %}
-<div class="container-fluid" style="background: linear-gradient(to right, #e3e4e3, #e3e4e3);">
-  <div class="container-fluid" style="background: linear-gradient(to right, #f76a8c, #febe57);">
-    <div class="row mt-3 mb-3">
-      <div class="col-md-12 text-center">
-        <h1 class="text-white">C-DAC Inventory Management System</h1>
-      </div>
+<div class="container-fluid" style="background: linear-gradient( rgb(109, 172, 255), white);">
+  <div class="row mt-2 mb-2">
+    <div class="col-md-12 text-center">
+      <div class="card-body">
+        <marquee behavior="scroll" direction="left" scrollamount="20">
+            <h3 class="my-"> C-DAC INVENTORY MANAGEMENT SYSTEM </h3>
+        </marquee>
+      
     </div>
   </div>
+</div>
+
+</div>   
     <div class="row mt-5">
       <div class="col-md-6 offset-md-3">
         <div class="border p-3 bg-white">
@@ -17,9 +22,9 @@
              <div class="alert alert-danger">
                 
                 
-                <h4>You have logged out successfully</h4>
+                <h4>YOU HAVE LOGGED OUT SUCCESSFULLY  </h4>
              </div>
-             <a href="{% url 'user-login' %}">Login</a>
+            <h3> <a href="{% url 'user-login' %}">Login</a></h3>
         </div>
            
        </div>
