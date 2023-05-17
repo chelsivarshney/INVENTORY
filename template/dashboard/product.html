@@ -75,7 +75,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Model</th>
-                        <th scope="col">Barcode</th>
+                        <th scope="col">QR code</th>
                         <th scope="col">Price</th>
                         <th scope="col">Activity</th>
                     </tr>
@@ -91,7 +91,9 @@
                         <td>{{ item.category }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.model }}</td>
-                        <td><a href="{{ item.barcode.url }}" download><img class="img-thumbnail" src="{{ item.barcode.url }}" alt=""></a></td>
+                        {% if item.qr_code %}
+                        <td><a href="{{ item.qr_code.url }}" download><img class="img-thumbnail" src="{{ item.qr_code.url }}" alt=""></a></td>
+                        {% endif %}
                         <td>{{ item.price }}</td>
                         <td>
                             <a class="btn btn-info btn-sm" href="{% url 'dashboard-product-update' item.id %}">Edit</a>

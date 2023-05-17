@@ -17,9 +17,9 @@ class Product(models.Model):
     category=models.CharField(max_length=20,choices=category,null=True)
     quantity=models.PositiveIntegerField(null=True)
     model=models.CharField(max_length=300,null=True)
-    barcode=models.ImageField(upload_to='images/',null=True)
+    #barcode=models.ImageField(upload_to='images/',null=True)
+    qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True) 
     price=models.CharField(max_length=20, default='Rs 0')
-
     class Meta:
         verbose_name_plural='Product'
     
@@ -27,12 +27,24 @@ class Product(models.Model):
         return f'{self.name}-{self.quantity}'
     
     def save(self,*args,**kwargs):
-        EAN=barcode.get_barcode_class('ean13')
-        ean=EAN(f'{self.asset}',writer=ImageWriter())
-        buffer=BytesIO()
-        ean.write(buffer)
-        self.barcode.save('barcode.png',File(buffer),save=False)
-        return super().save(*args,**kwargs)
+
+        def save(self,args,*kwargs):
+         details = f"Name: {self.name}\nPrice: {self.price}\nDescription: {self.model}"
+         qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=3,
+            border=2,
+        )
+         qr.add_data(details)
+         qr.make(fit=True)
+
+         img = qr.make_image(fill_color="black", back_color="white")
+         buffer = BytesIO()
+         img.save(buffer)
+         self.qr_code.save(f"{self.name}.png", ImageFile(buffer), save=False)
+
+         super().save(*args, **kwargs)
     
 
 
